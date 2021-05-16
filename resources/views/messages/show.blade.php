@@ -6,10 +6,10 @@
 <div class="container">
 
 @foreach ($adverts as $advert)
-@foreach ($messages
- as $message)
-
-<h1 align="@if ($message->sender_id == Auth::user()->id) right @elseif ($message->reciever_id == Auth::user()->id) right @else left @endif">{{ $message->message}}</h1>
+@foreach ($messages as $message)
+<h6 align="@if ($message->sender_id == Auth::user()->id) right">{{Auth::user()->name}}</h6> @elseif ($message->reciever_id == Auth::user()->id) left">{{$advert->name}}</h6> @endif
+<h6 align="@if ($message->sender_id == Auth::user()->id) right @elseif ($message->reciever_id == Auth::user()->id) left @endif">{{$message->created_at}}</h6>
+<h5 align="@if ($message->sender_id == Auth::user()->id) right @elseif ($message->reciever_id == Auth::user()->id) left @endif">{{ $message->message}}</h1>
 
 
 @endforeach

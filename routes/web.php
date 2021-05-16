@@ -16,7 +16,7 @@ use App\Models\Category;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::resource('categories',CategoryController::class);
 //Route::get('/', function () {
     //return view('home');
 //});
@@ -42,7 +42,7 @@ Route::post('/advert-store', [App\Http\Controllers\AdvertController::class, 'Adv
 //Route::get('/advert-category', [App\Http\Controllers\CategoryController::class, 'AdvertCategory'])->name('AdvertCategory');
 
 
-Route::resource('categories',CategoryController::class);
+
 
 Route::get('/dropdown', [App\Http\Controllers\DropdownController::class, 'index']);
 Route::get('/dropdown-data', [App\Http\Controllers\DropdownController::class, 'data']);

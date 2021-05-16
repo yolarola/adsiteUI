@@ -25,8 +25,9 @@
    
     <p>Номер телефона: {{$adv->phoneNumber}}</p>
     <p>Цена: {{$adv->price}} рублей</p>
-
+      @if ($adv->user_id != Auth::user()->id)
     <a href="{{route('messagesshow', $adv->user_id)}}" class="card-link">Написать сообщение</a>
+      @endif
     </div>
   </div>
 
