@@ -38,6 +38,7 @@
 </div>
 
 
+
 @foreach ($adverts as $adv)  
 
 
@@ -46,11 +47,11 @@
        <div class="card-body">
   
         <div class="row justify-content-left">
-            
+            <form action="{{route('AdvertUpdate')}}" method="post" enctype="multipart/form-data">
+                @csrf
 
                 <div class="card mt-2">
-                    <form action="{{route('ImageUpdate_main')}}" method="post" enctype="multipart/form-data">
-                        @csrf
+              
                       <div class="form-group mb-5">
                             <div class="d-flex align-items-start">
                                 <div class="container">
@@ -64,14 +65,10 @@
                                 </div>
                           </div>
                       </div>
-                      <input type="text" hidden class="form-control" id="adid" name="adid" value="{{ $adv->id }}" required="">
-                      <button type="submit" class="btn btn-primary mb-1 mt-3 justify-content-center">Обновить изображение</button>
-                    </form>
                 </div>
 
                 <div class="card mt-2">
-                    <form action="{{ route('ImageUpdate_2') }}" method="post" enctype="multipart/form-data">
-                        @csrf
+              
               <div class="form-group mb-5">
                     <div class="d-flex align-items-start">
                           <div class="container">
@@ -85,14 +82,10 @@
                           </div>
                   </div>
               </div>
-              <input type="text" hidden class="form-control" id="adid" name="adid" value="{{ $adv->id }}" required="">
-              <button type="submit" class="btn btn-primary mb-1 mt-3 justify-content-center">Обновить изображение</button>
-                    </form>
               </div>
 
               <div class="card mt-2">
-                <form action="{{ route('ImageUpdate_3') }}" method="post" enctype="multipart/form-data">
-                    @csrf
+              
               <div class="form-group mb-5">
                 <div class="d-flex align-items-start">
                   <div class="container">
@@ -106,9 +99,6 @@
                       </div>
               </div>
               </div>
-              <input type="text" hidden class="form-control" id="adid" name="adid" value="{{ $adv->id }}" required="">
-              <button type="submit" class="btn btn-primary mb-1 mt-3 justify-content-center">Обновить изображение</button>
-                    </form>
               </div>
              
            
@@ -118,8 +108,7 @@
     
     </div>
    
-    <form action="{{ route('admin_MyadUpdate') }}" method="post" enctype="multipart/form-data">
-        @csrf
+    
 <div class="col-md-7 col-lg-8">
       <h4 class="mb-3">Данные об объявлении</h4>
       <div class="row g-3">
@@ -177,7 +166,7 @@
               @endforeach
 
               </select>
-            </div>
+        </div>
        
         
 
@@ -208,7 +197,7 @@
 
         </form>
 
-    </div>
+      </div>
 </div>
 </div>
 

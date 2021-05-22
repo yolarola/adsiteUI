@@ -28,14 +28,13 @@
       @endif
   </div>
 
-<div class="container">
-  <nav class="nav d-flex justify-content-between">
-    <a class="p-2 text-muted" href="/categories">категории</a>
-    <a class="p-2 text-muted" href="/adminpanel">админпанель</a>
-    <a class="p-2 text-muted" href="/adminpanel/all">админпанель модерка</a>
-    <a class="p-2 text-muted" href="/dropdown">дропдавн</a>
-</nav>
-</div>
+  <div class="container">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 text-muted" href="/myads">мои объявления</a>
+      <a class="p-2 text-muted" href="/profile">мой профиль</a>
+  </nav>
+  </div>
+
 
 
 @foreach ($adverts as $adv)  
@@ -118,7 +117,7 @@
     
     </div>
    
-    <form action="{{ route('admin_MyadUpdate') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('MyadUpdate') }}" method="post" enctype="multipart/form-data">
         @csrf
 <div class="col-md-7 col-lg-8">
       <h4 class="mb-3">Данные об объявлении</h4>

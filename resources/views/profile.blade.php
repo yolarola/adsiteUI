@@ -1,6 +1,7 @@
 @extends('layouts.app')
-
+@if (Auth::check())
 @section('content')
+
 <div class="container">
         <div class="row">
             @if ($message = Session::get('success'))
@@ -27,6 +28,13 @@
             @endif
         </div>
 
+        <div class="container">
+            <nav class="nav d-flex justify-content-between">
+              <a class="p-2 text-muted" href="/myads">мои объявления</a>
+              <a class="p-2 text-muted" href="/profile">мой профиль</a>
+          </nav>
+          </div>
+          
 
        <div class="card">
        <div class="card-header">{{ __('Аватарка профиля') }}</div>
@@ -101,6 +109,8 @@
     <ul>
     
     
-   
-   
+
 @endsection
+
+@else <script>window.location = "/";</script>
+@endif  

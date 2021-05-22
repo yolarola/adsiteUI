@@ -122,4 +122,28 @@ class UserController extends Controller
         return redirect('/profile')->with('success');
     }
 
+    public function myads()
+    {
+
+        return view('/myads',['adverts'=>DB::table('adverts')->get()]);
+    }
+
+    public function addelete($ad)
+    {
+        //dd($ad);
+        $id=$ad;
+        $advert = advert::find($ad);
+        $advert -> destroy($id);
+
+        return redirect('/myads');
+
+    }
+
+    public function adedit($ad)
+    {
+        //dd($ad);
+        
+        return view('myads/edit',['adverts'=>DB::table('adverts')->where('id',$ad)->get()],['categories'=>DB::table('categories')->get()]);
+    }   
+
 }

@@ -26,7 +26,7 @@ class HomeController extends Controller
  
     public function index()
     {
-        return view('/home',['adverts'=>DB::table('adverts')->get()]);
+        return view('/home',['adverts'=>DB::table('adverts')->get()],['categories'=>DB::table('categories')->get()]);
     }
 
     public function homeshow($ad)
