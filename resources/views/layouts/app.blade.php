@@ -16,7 +16,7 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
- 
+
    <script src=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
     <!-- Fonts -->
@@ -28,7 +28,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.css" rel="stylesheet">
 
- 
+
 </head>
 <body>
     <div id="app">
@@ -41,7 +41,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -58,7 +58,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
@@ -66,7 +66,7 @@
                             @endif
                         @else
 
-                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('messagesall')}}">{{ __('Сообщения') }}</a>
                         </li>
@@ -87,11 +87,11 @@
                                         {{ __('Выйти') }}
                                     </a>
                                     <a class="dropdown-item" href="/profile">
-        
+
                                         {{ __('Профиль') }}
                                     </a>
 
-                                    
+
                                 @if ( $AdminMode = Auth::user()->AdminMode == 1 )
                                 <a class="dropdown-item" href="{{ route('adminpanel') }}">
                                     {{ __('Админ-панелька') }}
@@ -109,19 +109,59 @@
             </div>
         </nav>
 
-        <main class="py-4">
-        <div class="container">
+       @auth
+       @if (Auth::user()->AdminMode())
+                <div class="container">
+                    <nav class="nav d-flex justify-content-between">
+                    <a class="p-2 text-muted" href="/categories">категории</a>
+                    <a class="p-2 text-muted" href="/adminpanel">админпанель</a>
+                    <a class="p-2 text-muted" href="/adminpanel/all">админпанель модерка</a>
+                    <a class="p-2 text-muted" href="/dropdown">дропдавн</a>
+                </nav>
+                </div>
+        @endif
+       @endauth
+
+       <div class="container">
+        <div class="row">
+            @if ($message = Session::get('success'))
+
+                <div class="alert alert-success alert-block">
+
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <strong>{{ $message }}</strong>
+
+                </div>
+
+            @endif
+
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
+
+
+      {{--  <main class="py-4">--}}
+        <div class="container mt-3">
         <div class="row justify-content-center">
         <div class="col-8">
 
-        
+
         @yield('content')
 
         </div>
+      {{--  </div> --}}
         </div>
-        </div> 
-      
-        </main> 
+
+        </main>
     </div>
 </body>
 </html>

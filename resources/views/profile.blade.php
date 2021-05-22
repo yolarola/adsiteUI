@@ -1,32 +1,8 @@
 @extends('layouts.app')
-@if (Auth::check())
+
 @section('content')
 
-<div class="container">
-        <div class="row">
-            @if ($message = Session::get('success'))
 
-                <div class="alert alert-success alert-block">
-
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-
-                    <strong>{{ $message }}</strong>
-
-                </div>
-
-            @endif
-
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-        </div>
 
         <div class="container">
             <nav class="nav d-flex justify-content-between">
@@ -34,7 +10,7 @@
               <a class="p-2 text-muted" href="/profile">мой профиль</a>
           </nav>
           </div>
-          
+
 
        <div class="card">
        <div class="card-header">{{ __('Аватарка профиля') }}</div>
@@ -61,8 +37,8 @@
             </form>
 
         </div>
-        
-        
+
+
 
             <form action="{{route('UserUpdate')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -100,17 +76,16 @@
 
   <input type="text" hidden class="form-control" id="id" name="id" placeholder="Введите название" value = "{{$user->id}}">
 <button type="submit" class="btn btn-primary mb-2 mt-3">Обновить</button>
-            </form>   
-    
+            </form>
+
     </div>
     </div>
-    
-    
+
+
     <ul>
-    
-    
+
+
 
 @endsection
 
-@else <script>window.location = "/";</script>
-@endif  
+

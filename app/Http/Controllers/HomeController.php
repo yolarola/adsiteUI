@@ -8,7 +8,8 @@ use App\Models\advert;
 use App\Models\Category;
 use File;
 use Illuminate\Support\Facades\Storage;
-use Image; 
+use Illuminate\Support\Facades\Auth;
+use Image;
 use DB;
 
 class HomeController extends Controller
@@ -18,12 +19,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  //  public function __construct()
+  // {
+  //      $this->middleware('auth');
+  //  }
 
- 
     public function index()
     {
         return view('/home',['adverts'=>DB::table('adverts')->get()],['categories'=>DB::table('categories')->get()]);
@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     public function homeshow($ad)
     {
-        //dd($ad); 
+        //dd($ad);
         return view('/home/show',['adverts'=>DB::table('adverts')->where('id',$ad)->get()],['categories'=>DB::table('categories')->get()]);
-    }   
+    }
 }

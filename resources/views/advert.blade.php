@@ -2,42 +2,17 @@
 
 @section('content')
 
-<div class="container">
-  <div class="row">
-      @if ($message = Session::get('success'))
-
-          <div class="alert alert-success alert-block">
-
-              <button type="button" class="close" data-dismiss="alert">×</button>
-
-              <strong>{{ $message }}</strong>
-
-          </div>
-
-      @endif
-
-      @if (count($errors) > 0)
-          <div class="alert alert-danger">
-              <strong>Whoops!</strong> There were some problems with your input.<br><br>
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
-  </div>
 
 <div class="card">
        <div class="card-header">{{ __('Изображения') }}</div>
        <div class="card-body">
-  
+
         <div class="row justify-content-left">
             <form action="{{route('AdvertStore')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="card mt-2">
-              
+
                       <div class="form-group mb-5">
                             <div class="d-flex align-items-start">
                                 <div class="container">
@@ -54,7 +29,7 @@
                 </div>
 
                 <div class="card mt-2">
-              
+
               <div class="form-group mb-5">
                     <div class="d-flex align-items-start">
                           <div class="container">
@@ -71,7 +46,7 @@
               </div>
 
               <div class="card mt-2">
-              
+
               <div class="form-group mb-5">
                 <div class="d-flex align-items-start">
                   <div class="container">
@@ -86,15 +61,15 @@
               </div>
               </div>
               </div>
-             
-           
 
-            
-        
-    
+
+
+
+
+
     </div>
-   
-    
+
+
 <div class="col-md-7 col-lg-8">
       <h4 class="mb-3">Данные об объявлении</h4>
       <div class="row g-3">
@@ -107,7 +82,7 @@
                   </div>
             </div>
 
-         
+
 
             <div class="form-group col-12  mt-3 green-border-focus">
               <label for="Adverttext">Текст объявления</label>
@@ -135,8 +110,8 @@
           <div class="form-group col-12  mt-3">
               <label for="AdvertCategory">Выбор категории</label>
               <select multiple class="form-control" id="AdvertCategory" name="AdvertCategory">
-                   
-                   
+
+
                @foreach ($categories->where('parent_id', 0) as $category)
 
                     <option disabled> {{ $category->category_name}} {{'----------------------------------------------------------------'}}</option >
@@ -146,13 +121,13 @@
                           <option value = '{{$cate -> id }}' >{{'------'}} {{ $cate->category_name}} </option >
 
                     @endforeach
-          
+
               @endforeach
 
               </select>
         </div>
-       
-        
+
+
 
 
         <div class="col-12">
@@ -174,7 +149,7 @@
 
           <hr class="my-4 mt-3">
           <hr class="my-4 mt-5">
-          
+
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <button type="submit" class="btn btn-primary mb-1 mt-3 justify-content-center">Предпросмотр изображений</button>
          </div>

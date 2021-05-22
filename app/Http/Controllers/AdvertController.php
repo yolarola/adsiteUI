@@ -9,7 +9,7 @@ use App\Models\advert;
 use App\Models\Category;
 use Intervention\Image\ImageManager;
 use File;
-use Image; 
+use Image;
 class AdvertController extends Controller
 {
 
@@ -26,7 +26,7 @@ class AdvertController extends Controller
     ['categories'=>DB::table('categories')->get()]);
     }
 
-  
+
 
     public function AdvertStore(Request $request)
     {
@@ -72,14 +72,14 @@ class AdvertController extends Controller
         $Adverttext_req = $input['Adverttext'];
         $AdvertfirstName_req = $input['firstName'];
        // dd($AdvertCategory_req);
-        //dd($price_req);      
+        //dd($price_req);
         //$advert -> id = $request ->input('id');
         $advert -> folder = $user ->name;
         $advert -> advert_name = $AdvertName_req;
         $advert -> folder = 'rrrr';
         $advert -> phoneNumber =  $phoneNumber_req;
         $advert -> name = $user ->name;
-        $advert -> email = $user ->email;   
+        $advert -> email = $user ->email;
 
         $advert -> AdvertCategory = $AdvertCategory_req;
         $advert -> price = $price_req;
@@ -88,7 +88,7 @@ class AdvertController extends Controller
         $advert -> AdvertText = $Adverttext_req;
         $advert -> firstName = $AdvertfirstName_req;
 
-        $advert ->save();        
+        $advert ->save();
 
         $id = $user->id;
         $foldername = $user ->name;
@@ -114,7 +114,7 @@ class AdvertController extends Controller
 
             $path_advert = public_path().'/uploads/' . $foldername . '/' . $advert_name_translit;
             File::makeDirectory($path_advert);
-            
+
 
             $path_originals = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/originals';
             File::makeDirectory($path_originals);
@@ -125,7 +125,7 @@ class AdvertController extends Controller
             $advert ->main_folder = $user ->name;
             $advert ->user_id = $user->id;
             $advert ->save();
-            
+
         }
         else {
             //redirect('/advert')->with('success','You have successfully upload image.');
@@ -148,7 +148,7 @@ class AdvertController extends Controller
         //IMG2
         //dd($request);
         $image2 = $user->id.'_img_2'.time().'.'.request()->img_2->getClientOriginalExtension();
-     
+
         $request->img_2->move($path_originals, $image2);
 
         $advert -> img_2 = $image2;
@@ -162,7 +162,7 @@ class AdvertController extends Controller
 
         //IMG3
         $image3 = $user->id.'_img_3'.time().'.'.request()->img_3->getClientOriginalExtension();
-     
+
         $request->img_3->move($path_originals, $image3);
 
         $advert -> img_3 = $image3;
@@ -181,14 +181,14 @@ class AdvertController extends Controller
     public function AdvertUpdate(request $request)
     {
         //dd($ad);
-       
+
         $input = $request ->all();
         //dd($input);
         $id_req = $input['id'];
         $advert = advert::find($id_req); //дырочка
         //dd($id_req);
         //adverts::find($id_req);
-        
+
         $price_req = $input["price"];
         $adress_req = $input['adress'];
         $AdvertCategory_req = $input['AdvertCategory'];
@@ -196,7 +196,7 @@ class AdvertController extends Controller
         $AdvertName_req = $input['AdvertName'];
         $Adverttext_req = $input['Adverttext'];
         $firstName_req = $input['firstName'];
-        
+
         //$advert -> AdvertCategory = $AdvertCategory_req;
         $advert -> price = $price_req;
         $advert -> adress = $adress_req;
@@ -204,23 +204,23 @@ class AdvertController extends Controller
         $advert -> AdvertText = $Adverttext_req;
         $advert -> firstName = $firstName_req;
         $advert -> AdvertCategory = $AdvertCategory_req;
-       
-        $advert ->save();  
-        
+
+        $advert ->save();
+
         return redirect('/adminpanel/all')->with('success');
     }
 
     public function MyadUpdate(request $request)
     {
         //dd($ad);
-       
+
         $input = $request ->all();
         //dd($input);
         $id_req = $input['id'];
         $advert = advert::find($id_req); //дырочка
         //dd($id_req);
         //adverts::find($id_req);
-        
+
         $price_req = $input["price"];
         $adress_req = $input['adress'];
         $AdvertCategory_req = $input['AdvertCategory'];
@@ -228,7 +228,7 @@ class AdvertController extends Controller
         $AdvertName_req = $input['AdvertName'];
         $Adverttext_req = $input['Adverttext'];
         $firstName_req = $input['firstName'];
-        
+
         //$advert -> AdvertCategory = $AdvertCategory_req;
         $advert -> price = $price_req;
         $advert -> adress = $adress_req;
@@ -236,9 +236,9 @@ class AdvertController extends Controller
         $advert -> AdvertText = $Adverttext_req;
         $advert -> firstName = $firstName_req;
         $advert -> AdvertCategory = $AdvertCategory_req;
-       
-        $advert ->save();  
-        
+
+        $advert ->save();
+
         return redirect('/myads')->with('success');
     }
 
@@ -286,14 +286,14 @@ class AdvertController extends Controller
         $foldername = $advert -> main_folder;
         $advert_name_translit = $advert -> folder;
 
-        
+
         $request->validate
         ([
             'img_main' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $path_originals = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/originals';
         $path_crops = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/crops';
-        
+
         $image_main = $user->id.'_img_main'.time().'.'.request()->img_main->getClientOriginalExtension();
 
         $request->img_main->move($path_originals, $image_main);
@@ -308,7 +308,7 @@ class AdvertController extends Controller
 
             //return redirect('/myads/edit')
             return redirect()->route('adedit',$advert->id);
-            
+
     }
 
     public function ImageUpdate_2(Request $request)
@@ -321,16 +321,16 @@ class AdvertController extends Controller
         $foldername = $advert -> main_folder;
         $advert_name_translit = $advert -> folder;
 
-        
+
         $request->validate
         ([
             'img_2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $path_originals = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/originals';
         $path_crops = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/crops';
-        
+
         $image2 = $user->id.'_img_2'.time().'.'.request()->img_2->getClientOriginalExtension();
-     
+
         $request->img_2->move($path_originals, $image2);
 
         $advert -> img_2 = $image2;
@@ -343,7 +343,7 @@ class AdvertController extends Controller
 
             //return redirect('/myads/edit')
             return redirect()->route('adedit',$advert->id);
-            
+
     }
 
     public function ImageUpdate_3(Request $request)
@@ -356,16 +356,16 @@ class AdvertController extends Controller
         $foldername = $advert -> main_folder;
         $advert_name_translit = $advert -> folder;
 
-        
+
         $request->validate
         ([
             'img_3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $path_originals = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/originals';
         $path_crops = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/crops';
-        
+
         $image3 = $user->id.'_img_3'.time().'.'.request()->img_3->getClientOriginalExtension();
-     
+
         $request->img_3->move($path_originals, $image3);
 
         $advert -> img_3 = $image3;
@@ -378,7 +378,7 @@ class AdvertController extends Controller
 
             //return redirect('/myads/edit')
             return redirect()->route('adedit',$advert->id);
-            
+
     }
 
     public function admin_ImageUpdate_main(Request $request)
@@ -391,14 +391,14 @@ class AdvertController extends Controller
         $foldername = $advert -> main_folder;
         $advert_name_translit = $advert -> folder;
 
-        
+
         $request->validate
         ([
             'img_main' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $path_originals = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/originals';
         $path_crops = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/crops';
-        
+
         $image_main = $user->id.'_img_main'.time().'.'.request()->img_main->getClientOriginalExtension();
 
         $request->img_main->move($path_originals, $image_main);
@@ -413,7 +413,7 @@ class AdvertController extends Controller
 
             //return redirect('/myads/edit')
             return redirect()->route('adminpaneledit',$advert->id);
-            
+
     }
 
     public function admin_ImageUpdate_2(Request $request)
@@ -426,16 +426,16 @@ class AdvertController extends Controller
         $foldername = $advert -> main_folder;
         $advert_name_translit = $advert -> folder;
 
-        
+
         $request->validate
         ([
             'img_2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $path_originals = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/originals';
         $path_crops = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/crops';
-        
+
         $image2 = $user->id.'_img_2'.time().'.'.request()->img_2->getClientOriginalExtension();
-     
+
         $request->img_2->move($path_originals, $image2);
 
         $advert -> img_2 = $image2;
@@ -448,7 +448,7 @@ class AdvertController extends Controller
 
             //return redirect('/myads/edit')
             return redirect()->route('adminpaneledit',$advert->id);
-            
+
     }
 
     public function admin_ImageUpdate_3(Request $request)
@@ -461,16 +461,16 @@ class AdvertController extends Controller
         $foldername = $advert -> main_folder;
         $advert_name_translit = $advert -> folder;
 
-        
+
         $request->validate
         ([
             'img_3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $path_originals = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/originals';
         $path_crops = public_path().'/uploads/' . $foldername .'/'.$advert_name_translit . '/crops';
-        
+
         $image3 = $user->id.'_img_3'.time().'.'.request()->img_3->getClientOriginalExtension();
-     
+
         $request->img_3->move($path_originals, $image3);
 
         $advert -> img_3 = $image3;
@@ -483,20 +483,20 @@ class AdvertController extends Controller
 
             //return redirect('/myads/edit')
             return redirect()->route('adminpaneledit',$advert->id);
-            
+
     }
 
     public function admin_MyadUpdate(request $request)
     {
         //dd($ad);
-       
+
         $input = $request ->all();
         //dd($input);
         $id_req = $input['id'];
         $advert = advert::find($id_req); //дырочка
         //dd($id_req);
         //adverts::find($id_req);
-        
+
         $price_req = $input["price"];
         $adress_req = $input['adress'];
         $AdvertCategory_req = $input['AdvertCategory'];
@@ -504,7 +504,7 @@ class AdvertController extends Controller
         $AdvertName_req = $input['AdvertName'];
         $Adverttext_req = $input['Adverttext'];
         $firstName_req = $input['firstName'];
-        
+
         //$advert -> AdvertCategory = $AdvertCategory_req;
         $advert -> price = $price_req;
         $advert -> adress = $adress_req;
@@ -512,11 +512,11 @@ class AdvertController extends Controller
         $advert -> AdvertText = $Adverttext_req;
         $advert -> firstName = $firstName_req;
         $advert -> AdvertCategory = $AdvertCategory_req;
-       
-        $advert ->save();  
-        
+
+        $advert ->save();
+
         return redirect()->route('adminpanelall');
-    } 
+    }
 
 
     public function search(request $request)
@@ -540,7 +540,7 @@ class AdvertController extends Controller
         $adverts = Advert::query()
             ->where('AdvertCategory',$input)
             ->get();
-            
+
         return view('categorysearch', ['adverts' => $adverts],['categories'=>DB::table('categories')->get()]);
     }
 }

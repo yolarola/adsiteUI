@@ -24,6 +24,7 @@ class User extends Authenticatable
         'phoneNumber',
         'password',
         'avatar',
+        'AdminMode',
     ];
 
     /**
@@ -44,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function AdminMode()
+    {
+        return $this->AdminMode === 1;
+    }
 }

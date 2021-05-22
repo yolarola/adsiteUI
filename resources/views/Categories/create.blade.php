@@ -9,14 +9,14 @@
         <select name="parent_id" id="parent_id">
             @foreach ($categories as $category)
                 <option value="{{$category -> id}}">
-                
+
                     {{$category -> category_name}}
 
                 </option>
             @endforeach
         </select>
 
-        <button type='submit'>OO</button>
+        <button type='submit'>Создать</button>
     </form>
 
 </div>
