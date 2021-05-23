@@ -47,7 +47,7 @@
         <div class="row justify-content-left">
 
 
-                <div class="card mt-2">
+
                     <form action="{{route('ImageUpdate_main')}}" method="post" enctype="multipart/form-data">
                         @csrf
                       <div class="form-group mb-5">
@@ -66,9 +66,9 @@
                       <input type="text" hidden class="form-control" id="adid" name="adid" value="{{ $adv->id }}" required="">
                       <button type="submit" class="btn btn-primary mb-1 mt-3 justify-content-center">Обновить изображение</button>
                     </form>
-                </div>
 
-                <div class="card mt-2">
+
+
                     <form action="{{ route('ImageUpdate_2') }}" method="post" enctype="multipart/form-data">
                         @csrf
               <div class="form-group mb-5">
@@ -87,9 +87,9 @@
               <input type="text" hidden class="form-control" id="adid" name="adid" value="{{ $adv->id }}" required="">
               <button type="submit" class="btn btn-primary mb-1 mt-3 justify-content-center">Обновить изображение</button>
                     </form>
-              </div>
 
-              <div class="card mt-2">
+
+
                 <form action="{{ route('ImageUpdate_3') }}" method="post" enctype="multipart/form-data">
                     @csrf
               <div class="form-group mb-5">
@@ -108,7 +108,7 @@
               <input type="text" hidden class="form-control" id="adid" name="adid" value="{{ $adv->id }}" required="">
               <button type="submit" class="btn btn-primary mb-1 mt-3 justify-content-center">Обновить изображение</button>
                     </form>
-              </div>
+
 
 
 
@@ -158,7 +158,7 @@
 
           <div class="form-group col-12  mt-3">
               <label for="AdvertCategory">Выбор категории</label>
-              <select multiple class="form-control" id="AdvertCategory" name="AdvertCategory">
+              <select class="form-control" id="AdvertCategory" name="AdvertCategory" required="">
 
 
                @foreach ($categories->where('parent_id', 0) as $category)

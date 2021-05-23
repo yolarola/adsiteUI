@@ -13,11 +13,11 @@ class AdvertTableUpdating2 extends Migration
      */
     public function up()
     {
-        Schema::table('adverts', function (Blueprint $table) 
+        Schema::table('adverts', function (Blueprint $table)
         {
             //$table->string('folder')->default('null');
-            $table->string('AdvertText');
-           
+            $table->text('AdvertText')->nullable();;
+
             });
     }
 

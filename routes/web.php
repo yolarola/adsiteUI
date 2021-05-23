@@ -35,16 +35,27 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::post('/search', [App\Http\Controllers\AdvertController::class, 'search'])->name('search');
 Route::post('/categorysearch', [App\Http\Controllers\AdvertController::class, 'categorysearch'])->name('categorysearch');
 Route::get('/show/{advert}', [App\Http\Controllers\HomeController::class, 'homeshow'])->name('homeshow');
+Route::get('/user/{id}',[App\Http\Controllers\UserController::class, 'userprofile'])->name('userprofile');
 
 
 
 Route::group(['middleware'=>'auth'], function(){
+
+        Route::get('/report/{advert_id}', [App\Http\Controllers\UserController::class, 'report'])->name('report');
+
+        Route::get('/reportuser/{user_id}', [App\Http\Controllers\UserController::class, 'reportuser'])->name('reportuser');
+
+        Route::post('/report-send', [App\Http\Controllers\UserController::class, 'sendreport'])->name('sendreport');
 
         Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
 
         Route::post('/profile', [App\Http\Controllers\UserController::class, 'update_avatar'])->name('update_avatar');
 
         Route::get('/myads', [App\Http\Controllers\UserController::class, 'myads'])->name('myads');
+
+        Route::post('/user-review', [App\Http\Controllers\UserController::class, 'sendreview'])->name('sendreview');
+
+        Route::get('/archive/{id}', [App\Http\Controllers\UserController::class, 'archive'])->name('archive');
 
         Route::get('/advert', [App\Http\Controllers\AdvertController::class, 'advert']);
 

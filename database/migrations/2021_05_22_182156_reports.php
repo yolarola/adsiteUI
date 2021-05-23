@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdvertsTable extends Migration
+class Reports extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateAdvertsTable extends Migration
      */
     public function up()
     {
-        Schema::create('adverts', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('img_main')->default('advert.jpg');
-            $table->string('img_2')->default('advert.jpg');
-            $table->string('img_3')->default('advert.jpg');
-            $table->string('folder')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->integer('reporter_id')->nullable();
+            $table->string('user_name')->nullable();
+            $table->string('reporter_name')->nullable();
+            $table->text('report')->nullable();
         });
     }
 
@@ -30,6 +31,6 @@ class CreateAdvertsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adverts');
+        //
     }
 }

@@ -13,12 +13,12 @@ class TableUpdate2 extends Migration
      */
     public function up()
     {
-        Schema::table('adverts', function (Blueprint $table) 
+        Schema::table('adverts', function (Blueprint $table)
         {
             //$table->string('folder')->default('null');
-            $table -> string('name');
-            $table -> string('email');
-            $table -> string('phoneNumber');
+            $table -> string('name')->nullable();;
+            $table -> string('email')->nullable();;
+            $table -> string('phoneNumber')->nullable();;
 
             });
     }

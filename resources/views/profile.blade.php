@@ -8,6 +8,7 @@
             <nav class="nav d-flex justify-content-between">
               <a class="p-2 text-muted" href="/myads">мои объявления</a>
               <a class="p-2 text-muted" href="/profile">мой профиль</a>
+              <a class="p-2 text-muted" href="{{ route('userprofile',[Auth::user()->id]) }}">мои отзывы</a>
           </nav>
           </div>
 

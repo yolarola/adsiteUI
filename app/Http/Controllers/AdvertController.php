@@ -175,7 +175,7 @@ class AdvertController extends Controller
 
 
 
-        return redirect('/')->with('success','You have successfully upload image.');
+        return redirect('/')->with('success','Ваше объявление отправлено на модерацию. После одобрения оно будет опубликовано.');
     }
 
     public function AdvertUpdate(request $request)

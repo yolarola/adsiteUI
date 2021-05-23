@@ -13,11 +13,11 @@ class Update4 extends Migration
      */
     public function up()
     {
-        Schema::table('adverts', function (Blueprint $table) 
+        Schema::table('adverts', function (Blueprint $table)
         {
             //$table->string('folder')->default('null');
-            $table -> string('main_folder')->default('null');
-            
+            $table -> string('main_folder')->nullable();
+
             });
     }
 

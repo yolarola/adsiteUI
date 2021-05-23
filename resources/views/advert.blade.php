@@ -11,7 +11,7 @@
             <form action="{{route('AdvertStore')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
-                <div class="card mt-2">
+
 
                       <div class="form-group mb-5">
                             <div class="d-flex align-items-start">
@@ -26,9 +26,9 @@
                                 </div>
                           </div>
                       </div>
-                </div>
 
-                <div class="card mt-2">
+
+
 
               <div class="form-group mb-5">
                     <div class="d-flex align-items-start">
@@ -43,9 +43,9 @@
                           </div>
                   </div>
               </div>
-              </div>
 
-              <div class="card mt-2">
+
+
 
               <div class="form-group mb-5">
                 <div class="d-flex align-items-start">
@@ -60,10 +60,6 @@
                       </div>
               </div>
               </div>
-              </div>
-
-
-
 
 
 
@@ -78,7 +74,7 @@
                   <label for="AdvertName" class="form-label">Название объявления</label>
                   <input type="text" class="form-control" id="AdvertName" name="AdvertName" placeholder="Введите название">
                   <div class="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
+                    Please enter a valid advert name.
                   </div>
             </div>
 
@@ -102,14 +98,14 @@
                   <label for="adress" class="form-label">Адрес</label>
                   <input type="text" class="form-control" id="adress" name="adress" placeholder="Введите свой адрес" value="" required="">
                   <div class="invalid-feedback">
-                       Valid last name is required.
+                       Valid adress is required.
                   </div>
             </div>
 
 
           <div class="form-group col-12  mt-3">
               <label for="AdvertCategory">Выбор категории</label>
-              <select multiple class="form-control" id="AdvertCategory" name="AdvertCategory">
+              <select class="form-control" id="AdvertCategory" name="AdvertCategory" required="">
 
 
                @foreach ($categories->where('parent_id', 0) as $category)
@@ -118,12 +114,14 @@
 
                     @foreach ($categories->where('parent_id', $category->id) as $cate)
 
-                          <option value = '{{$cate -> id }}' >{{'------'}} {{ $cate->category_name}} </option >
+                          <option value = '{{$cate -> id }}' selected>{{'------'}} {{ $cate->category_name}} </option >
 
                     @endforeach
 
               @endforeach
-
+                    <div class="invalid-feedback">
+                        Категорию нужно выбрать.
+                    </div>
               </select>
         </div>
 
@@ -134,7 +132,7 @@
               <label for="phoneNumber" class="form-label">Номер телефона</label>
               <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="8 914 444 22 11">
               <div class="invalid-feedback">
-                 Please enter a valid email address for shipping updates.
+                 Please enter a valid phonenumber for shipping updates.
               </div>
         </div>
 
@@ -142,7 +140,7 @@
               <label for="price" class="form-label">Цена</label>
               <input type="text" class="form-control" id="price" name="price" placeholder="5000rub" required="">
               <div class="invalid-feedback">
-                   Please enter your shipping address.
+                   Please enter your price.
               </div>
         </div>
         <input type="text" hidden class="form-control" id="user_id" name="user_id" value="{{Auth::user()->id}}" required="">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AdvertTableUpdating extends Migration
+class AdvertArchiveUpdate1 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class AdvertTableUpdating extends Migration
      */
     public function up()
     {
-        Schema::table('adverts', function (Blueprint $table)
+        Schema::table('advert_archives', function (Blueprint $table)
         {
-            //$table->string('folder')->default('null');
-            $table->integer('AdvertCategory')->nullable();;
-            $table->integer('price')->nullable();;
-            $table->string('adress')->nullable();;
-            });
+
+            $table->string('create_date')->nullable();
+        });
+
     }
 
     /**

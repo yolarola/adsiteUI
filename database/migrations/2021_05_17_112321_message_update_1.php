@@ -13,10 +13,10 @@ class MessageUpdate1 extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) 
+        Schema::table('messages', function (Blueprint $table)
         {
-            
-            $table->integer('advert_id')->default(0);
+
+            $table->integer('advert_id')->nullable();
             });
     }
 

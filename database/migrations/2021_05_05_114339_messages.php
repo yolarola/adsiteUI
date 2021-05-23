@@ -16,9 +16,9 @@ class Messages extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('sender_id')->default(0);
-            $table->integer('reciever_id')->default(0);
-            $table->string('message')->default(NULL);
+            $table->integer('sender_id')->nullable();
+            $table->integer('reciever_id')->nullable();
+            $table->string('message')->nullable();
         });
     }
 

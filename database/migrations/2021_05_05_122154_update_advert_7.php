@@ -13,10 +13,10 @@ class UpdateAdvert7 extends Migration
      */
     public function up()
     {
-        Schema::table('adverts', function (Blueprint $table) 
+        Schema::table('adverts', function (Blueprint $table)
         {
-            
-            $table->integer('user_id')->default(0);
+
+            $table->integer('user_id')->nullable();
             });
     }
 

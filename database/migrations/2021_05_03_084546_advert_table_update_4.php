@@ -13,10 +13,10 @@ class AdvertTableUpdate4 extends Migration
      */
     public function up()
     {
-        Schema::table('adverts', function (Blueprint $table) 
+        Schema::table('adverts', function (Blueprint $table)
         {
             //$table->string('folder')->default('null');
-            $table->integer('moderated')->default(0);
+            $table->integer('moderated')->nullable();
             });
     }
 

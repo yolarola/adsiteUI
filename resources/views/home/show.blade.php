@@ -19,7 +19,7 @@
   </div>
     </div>
 {{-- col-xs-2--}}
-    <h3>{{$adv->firstName}}</h3>
+    <h3><a href="{{route('userprofile',$adv->user_id)}}"> {{$adv->name}} </a></h3>
     <p>{{$adv->AdvertText}}</p>
     <div class="container mt-4">
 
@@ -31,6 +31,16 @@
         <a href="{{route('messagesshow', [$adv->user_id, $adv_id = $adv->id])}}" class="card-link">Написать сообщение</a>
 
         @endif
+
+
+            @if (Auth::user()->id == $adv->user_id)
+                     <a href="{{ route('archive', [$adv_id = $adv->id]) }}" class="card-link">Снять с публикации</a>
+            @endif
+
+            @if ($adv->user_id != Auth::user()->id)
+            <a href="{{ route('report', [$adv_id = $adv->user_id]) }}" class="card-link">Пожаловаться</a>
+            @endif
+
     @endauth
     </div>
   </div>
